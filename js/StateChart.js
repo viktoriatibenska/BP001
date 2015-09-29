@@ -39,7 +39,7 @@ var states = {
 			height : 100
 		},
 		name : "state 1",
-		events : [ "entry / init()", "exit / destroy()" ],
+		events : [ "Toto je testovaci text." ],
 		attrs : {
 			'.uml-state-body' : {
 				fill : 'rgba(48, 208, 198, 0.1)',
@@ -62,7 +62,7 @@ var states = {
 			height : 300
 		},
 		name : "state 2",
-		events : [ "entry / create()", "exit / kill()", "A / foo()",
+		events : [ "Zaciatok 2. stavu.",
 				"B / bar()" ],
 		attrs : {
 			'.uml-state-body' : {
@@ -86,7 +86,7 @@ var states = {
 			height : 60
 		},
 		name : "state 3",
-		events : [ "entry / create()", "exit / kill()" ],
+		events : [ "Toto je stav 3", "exit / kill()" ],
 		attrs : {
 			'.uml-state-body' : {
 				fill : 'rgba(48, 208, 198, 0.1)',
@@ -109,7 +109,7 @@ var states = {
 			height : 50
 		},
 		name : "sub state 4",
-		events : [ "entry / create()" ],
+		events : [ "Vnoreny stav v stave." ],
 		attrs : {
 			'.uml-state-body' : {
 				fill : 'rgba(48, 208, 198, 0.1)',
