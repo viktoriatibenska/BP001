@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Adding state test</title>
+<link rel="stylesheet" type="text/css" href="css/Joint.css" />
+<script src="js/jquery.min.js"></script>
+<script src="js/lodash.min.js"></script>
+<script src="js/backbone-min.js"></script>
+<script src="js/Joint.js"></script>
+<script src="js/joint.shapes.uml.js"></script>
+</head>
+<body>
+	<button onclick="addState()">Add state</button>
+	<div id="myholder"></div>
+	<script type="text/javascript">
+		var states = [];
+		
+		var graph = new joint.dia.Graph();
+
+		var paper = new joint.dia.Paper({
+			el : $('#myholder'),
+			width : 800,
+			height : 600,
+			gridSize : 1,
+			model : graph
+		});
+
+		var uml = joint.shapes.uml;
+		
+		/**
+		Initializes the webpage environment and adds 
+		*/
+		var init = function() {
+			/**var graph = new joint.dia.Graph();
+
+			var paper = new joint.dia.Paper({
+				el : $('#myholder'),
+				width : 800,
+				height : 600,
+				gridSize : 1,
+				model : graph
+			});
+
+			var uml = joint.shapes.uml;*/
+
+			states.push(new uml.StartState({
+				position : {
+					x : 20,
+					y : 20
+				},
+				size : {
+					width : 30,
+					height : 30
+				},
+				attrs : {
+					'circle' : {
+						fill : '#4b4a67',
+						stroke : 'none'
+					}
+				}
+			}), new uml.EndState({
+				position : {
+					x : 750,
+					y : 550
+				},
+				size : {
+					width : 30,
+					height : 30
+				},
+				attrs : {
+					'.outer' : {
+						stroke : "#4b4a67",
+						'stroke-width' : 2
+					},
+					'.inner' : {
+						fill : '#4b4a67'
+					}
+				}
+			}));
+
+			graph.addCells(states);
+
+		};
+		
+		/**
+		Function that adds new neutral state to the statechart diagram
+		*/
+		var addState = function() {
+			states.push(new uml.State({
+				position : {
+					x : 100,
+					y : 100
+				},
+				size : {
+					width : 200,
+					height : 100
+				},
+				name : "state 1",
+				events : [ "Toto je testovaci text." ],
+				attrs : {
+					'.uml-state-body' : {
+						fill : 'rgba(48, 208, 198, 0.1)',
+						stroke : 'rgba(48, 208, 198, 0.5)',
+						'stroke-width' : 1.5
+					},
+					'.uml-state-separator' : {
+						stroke : 'rgba(48, 208, 198, 0.4)'
+					}
+				}
+			}));
+			
+			graph.addCells(states);
+		};
+		
+		
+		$(document).ready(init);
+	</script>
+</body>
+</html>
