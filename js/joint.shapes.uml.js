@@ -192,7 +192,11 @@ joint.shapes.uml.Association = joint.dia.Link.extend({
 });
 
 // Statechart
+/**
+ * The html tags for the statechart diagram are created here.
+ * */
 
+//This is for the uml basic state
 joint.shapes.uml.State = joint.shapes.basic.Generic.extend({
 
     markup: [
@@ -270,6 +274,7 @@ joint.shapes.uml.State = joint.shapes.basic.Generic.extend({
 
 });
 
+//This is for the uml start state
 joint.shapes.uml.StartState = joint.shapes.basic.Circle.extend({
 
     defaults: joint.util.deepSupplement({
@@ -281,6 +286,7 @@ joint.shapes.uml.StartState = joint.shapes.basic.Circle.extend({
 
 });
 
+//This is for the uml end state
 joint.shapes.uml.EndState = joint.shapes.basic.Generic.extend({
 
     markup: '<g class="rotatable"><g class="scalable"><circle class="outer"/><circle class="inner"/></g></g>',
@@ -308,6 +314,7 @@ joint.shapes.uml.EndState = joint.shapes.basic.Generic.extend({
 
 });
 
+//This is for the uml transition
 joint.shapes.uml.Transition = joint.dia.Link.extend({
     defaults: {
         type: 'uml.Transition',
