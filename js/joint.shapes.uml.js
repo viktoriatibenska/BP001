@@ -200,9 +200,10 @@ joint.shapes.uml.Association = joint.dia.Link.extend({
 joint.shapes.uml.State = joint.shapes.basic.Generic.extend({
 
     markup: [
+      
         '<g class="rotatable">',
           '<g class="scalable">',
-            '<rect class="uml-state-body"/>',
+            '<rect class="uml-state-body"/>',            
           '</g>',
           '<path class="uml-state-separator"/>',
           '<text class="uml-state-name"/>',

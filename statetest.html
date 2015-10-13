@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Adding state test</title>
 <link rel="stylesheet" type="text/css" href="css/Joint.css" />
+<link rel="stylesheet" type="text/css" href="css/OPwrapper.css" />
 <script src="js/jquery.min.js"></script>
 <script src="js/lodash.min.js"></script>
 <script src="js/backbone-min.js"></script>
@@ -102,18 +103,32 @@
 			graph.addCells(states);
 		};
 
-		/**$(".uml-state-body").on().hover(function() {
-			$(this).attr( {fill:'rgba(100, 54, 212, 0.1)'} );
-		}, function() {
-			$(this).attr( {fill:'rgba(48, 208, 198, 0.1)'} );
-		});*/
-
 		$(document).ready(init);
 		
-		$(document).on('mouseenter','.uml-state-body',function(){
+		/*
+		Change state attributes when mouse enters and leaves
+		*/
+		$(document).on('mouseenter', '.uml-state-body', function() {
 			console.log('0');
-		}).on('mouseleave','.uml-state-body',function(){
+
+			//change color when mouse enter
+			$(this).attr({
+				fill : 'rgba(153, 0, 0, 0.1)',
+				stroke : 'rgba(153, 0, 0, 0.5)'
+			});
+			/*
+			//show the wrapper when entered
+			$(this).prev().attr({
+				fill : 'rgba(153, 0, 0, 0.1)',
+				stroke : 'rgba(153, 0, 0, 0.5)'
+			});*/
+		}).on('mouseleave', '.uml-state-body', function() {
 			console.log('1');
+			//change color to original when mouse leave
+			$(this).attr({
+				fill : 'rgba(48, 208, 198, 0.1)',
+				stroke : 'rgba(48, 208, 198, 0.5)'
+			});
 		})
 	</script>
 </body>
