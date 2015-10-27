@@ -77,7 +77,7 @@
 		Function that adds new neutral state to the statechart diagram
 		 */
 		var addState = function() {
-			states.push(new uml.State({
+			states.push(new uml.CustomState({
 				position : {
 					x : 100,
 					y : 100
@@ -89,6 +89,11 @@
 				name : "state 1",
 				events : [ "Toto je testovaci text." ],
 				attrs : {
+					'.uml-state-wrapper' : {
+						fill : 'rgba(0, 102, 0, 0)',
+						stroke : 'rgba(0, 102, 0, 0)',
+						'stroke-width' : 1.5
+					},
 					'.uml-state-body' : {
 						fill : 'rgba(48, 208, 198, 0.1)',
 						stroke : 'rgba(48, 208, 198, 0.5)',
@@ -96,6 +101,10 @@
 					},
 					'.uml-state-separator' : {
 						stroke : 'rgba(48, 208, 198, 0.4)'
+					},
+					'.state-connector': {
+			            //"xlink:href": "http://uxrepo.com/static/icon-sets/ionicons/svg/ios7-arrow-thin-right.svg"
+						"xlink:href": "arrow.svg"
 					}
 				}
 			}));
@@ -106,30 +115,42 @@
 		$(document).ready(init);
 		
 		/*
-		Change state attributes when mouse enters and leaves
+		Change state attributes when mouse enters and leaves 
 		*/
 		$(document).on('mouseenter', '.uml-state-body', function() {
 			console.log('0');
 
 			//change color when mouse enter
-			$(this).attr({
-				fill : 'rgba(153, 0, 0, 0.1)',
-				stroke : 'rgba(153, 0, 0, 0.5)'
-			});
-			/*
-			//show the wrapper when entered
-			$(this).prev().attr({
+			/*$(this).attr({
 				fill : 'rgba(153, 0, 0, 0.1)',
 				stroke : 'rgba(153, 0, 0, 0.5)'
 			});*/
+			
+			//show the wrapper when entered
+			$(this).prev().attr({
+				'visibility': 'visible'
+			});
 		}).on('mouseleave', '.uml-state-body', function() {
 			console.log('1');
 			//change color to original when mouse leave
-			$(this).attr({
+			/*$(this).attr({
 				fill : 'rgba(48, 208, 198, 0.1)',
 				stroke : 'rgba(48, 208, 198, 0.5)'
+			});*/
+			
+			/*$(this).prev().attr({
+				'visibility': 'hidden'
+			});*/
+		}).on('mouseleave', '.wrapped', function() {
+			$(this).attr({
+				'visibility': 'hidden'
 			});
-		})
+		});
+		
+		$(document).on('click', '.state-connector', function() {
+			console.log('click arrow');
+		});
+		
 	</script>
 </body>
 </html>
