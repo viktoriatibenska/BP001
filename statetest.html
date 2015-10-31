@@ -122,10 +122,10 @@
 
 		var addStateConnect = function(from) {
 			console.log("Hello");
-			console.log($(from).attr("model-id"));
-			/*var newState = new uml.CustomState({
+			console.log(from);
+			var newState = new uml.CustomState({
 				position : {
-					x : 100,
+					x : 400,
 					y : 100
 				},
 				size : {
@@ -158,11 +158,15 @@
 			states.push(newState);
 			graph.addCells(states);
 			
+			console.log(newState.id);
+			
 			transitions.push(new uml.Transition({
-		        source: { id: from.id },
+		        source: { id: from },
 		        target: { id: newState.id },
 		        attrs: {'.connection': linkAttrs }
-		    }));*/
+		    }));
+			
+			graph.addCells(transitions);
 		};
 		
 		$(document).ready(init);
@@ -193,8 +197,12 @@
 			});
 		});
 		
+		/*
+		add state when arrow is clicked
+		*/
 		$(document).on('click', '.state-connector', function() {
-			console.log($(this).closest("g.CustomState").attr("model-id"));
+			addStateConnect($(this).closest("g.CustomState").attr("model-id"));
+			//console.log($(this).closest("g.CustomState").attr("model-id"));
 		});
 		
 	</script>
