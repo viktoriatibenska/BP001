@@ -16,6 +16,7 @@
 	<div id="myholder"></div>
 	<script type="text/javascript">
 		var states = [];
+		var transitions = [];
 
 		var graph = new joint.dia.Graph();
 
@@ -29,6 +30,13 @@
 
 		var uml = joint.shapes.uml;
 
+		var linkAttrs =  {
+			    'fill': 'none',
+			    'stroke-linejoin': 'round',
+			    'stroke-width': '2',
+			    'stroke': '#4b4a67'
+		};
+		
 		/**
 		Initializes the webpage environment and adds 
 		 */
@@ -112,14 +120,57 @@
 			graph.addCells(states);
 		};
 
+		var addStateConnect = function(from) {
+			console.log("Hello");
+			console.log($(from).attr("model-id"));
+			/*var newState = new uml.CustomState({
+				position : {
+					x : 100,
+					y : 100
+				},
+				size : {
+					width : 200,
+					height : 100
+				},
+				name : "state 2",
+				events : [ "Toto je text noveho elementu." ],
+				attrs : {
+					'.uml-state-wrapper' : {
+						fill : 'rgba(0, 102, 0, 0)',
+						stroke : 'rgba(0, 102, 0, 0)',
+						'stroke-width' : 1.5
+					},
+					'.uml-state-body' : {
+						fill : 'rgba(48, 208, 198, 0.1)',
+						stroke : 'rgba(48, 208, 198, 0.5)',
+						'stroke-width' : 1.5
+					},
+					'.uml-state-separator' : {
+						stroke : 'rgba(48, 208, 198, 0.4)'
+					},
+					'.state-connector': {
+			            //"xlink:href": "http://uxrepo.com/static/icon-sets/ionicons/svg/ios7-arrow-thin-right.svg"
+						"xlink:href": "arrow.svg"
+					}
+				}
+			});
+			
+			states.push(newState);
+			graph.addCells(states);
+			
+			transitions.push(new uml.Transition({
+		        source: { id: from.id },
+		        target: { id: newState.id },
+		        attrs: {'.connection': linkAttrs }
+		    }));*/
+		};
+		
 		$(document).ready(init);
 		
 		/*
 		Change state attributes when mouse enters and leaves 
 		*/
 		$(document).on('mouseenter', '.uml-state-body', function() {
-			console.log('0');
-
 			//change color when mouse enter
 			/*$(this).attr({
 				fill : 'rgba(153, 0, 0, 0.1)',
@@ -131,15 +182,10 @@
 				'visibility': 'visible'
 			});
 		}).on('mouseleave', '.uml-state-body', function() {
-			console.log('1');
 			//change color to original when mouse leave
 			/*$(this).attr({
 				fill : 'rgba(48, 208, 198, 0.1)',
 				stroke : 'rgba(48, 208, 198, 0.5)'
-			});*/
-			
-			/*$(this).prev().attr({
-				'visibility': 'hidden'
 			});*/
 		}).on('mouseleave', '.wrapped', function() {
 			$(this).attr({
@@ -148,7 +194,7 @@
 		});
 		
 		$(document).on('click', '.state-connector', function() {
-			console.log('click arrow');
+			console.log($(this).closest("g.CustomState").attr("model-id"));
 		});
 		
 	</script>
