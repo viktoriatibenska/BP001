@@ -13,6 +13,7 @@
 </head>
 <body>
 	<button onclick="addState()">Add state</button>
+	<button onclick="addConnector()">Add connector</button>
 	<div id="myholder"></div>
 	<script type="text/javascript">
 		var states = [];
@@ -168,6 +169,31 @@
 			
 			graph.addCells(transitions);
 		};
+		
+		var addConnector = function(){
+			var from,to;
+			var count = 0;
+			
+			$(document).on('click','g.element.uml',function () {
+				if (count < 2){
+					if (count == 0){
+						from = $(this).attr('model-id');
+					}else if (count == 1){
+						to = $(this).attr('model-id');
+					}
+					count++;
+					if (count == 2){
+						transitions.push(new uml.Transition({
+					        source: { id: from },
+					        target: { id: to },
+					        attrs: {'.connection': linkAttrs }
+					    }));
+						
+						graph.addCells(transitions);
+					}
+				}
+			});
+		}
 		
 		$(document).ready(init);
 		
