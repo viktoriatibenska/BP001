@@ -16,6 +16,18 @@
 	<h1>MVC test</h1>
 	
 	<?php
+
+	ini_set('display_errors', 1);
+	
+	include 'model/Model.php';
+	include 'view/View.php';
+	include 'controller/Controller.php';
+	
+	
+	$model = new Model();
+	$controller = new Controller($model);
+	$view = new View($controller, $model);
+
 	$model = new Model();
 	$controller = new Controller($model);
 	$view = new View($controller, $model);
